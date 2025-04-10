@@ -1,0 +1,163 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    font-size: 5vw;  /* Scales text based on screen width (good for mobile) */
+    text-align: center;
+    background-color: #000;
+    color: #fff;
+}
+
+hr {
+    width: 500px;
+}
+
+#board {
+    width: 400px;
+    height: 400px;
+
+    background-color: #cdc1b5;
+    border: 6px solid #bbada0;
+
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.tile {
+    width: 90px;
+    height: 90px;
+    border: 5px solid #bbada0;
+
+    font-size: 40px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* colored tiles */
+
+.x2 {
+    background-color: #eee4da;
+    color: #727371;
+}
+
+.x4 {
+    background-color: #ece0ca;
+    color: #727371;
+}
+
+.x8 {
+    background-color: #f4b17a;
+    color: white;
+}
+
+.x16{
+    background-color: #f59575;
+    color: white;
+}
+
+.x32{
+    background-color: #f57c5f;
+    color: white;
+}
+
+.x64{
+    background-color: #f65d3b;
+    color: white;
+}
+
+.x128{
+    background-color: #edce71;
+    color: white;
+}
+
+.x256{
+    background-color: #edcc63;
+    color: white;
+}
+
+.x512{
+    background-color: #edc651;
+    color: white;
+}
+
+.x1024{
+    background-color: #eec744;
+    color: white;
+}
+
+.x2048{
+    background-color: #ecc230;
+    color: white;
+}
+
+.x4096 {
+    background-color: #fe3d3d;
+    color: white;
+}
+
+.x8192 {
+    background-color: #ff2020;
+    color: white;
+}
+
+.x16384 {
+    background-color: #ff2020;
+    color: white;
+}
+
+.x32768 {
+    background-color: #ff2020;
+    color: white;
+}
+
+.game-over-section {
+    display: none;
+    margin-top: 30px;
+    background-color: #faf8ef;
+    padding: 20px;
+    border: 2px solid #bbada0;
+    border-radius: 10px;
+    text-align: center;
+    font-family: 'Clear Sans', 'Helvetica Neue', Arial, sans-serif;
+  }
+  
+  .game-over-section h1 {
+    color: #776e65;
+    margin-bottom: 10px;
+  }
+  
+  .game-over-section button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #8f7a66;
+    color: #f9f6f2;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+button {
+font-size: 5vw;
+padding: 3vw 6vw;
+margin: 4vw;
+}
+
+/* Media query for desktop */
+@media (min-width: 1000px) {
+  body {
+    font-size: 14px; 
+    padding: 20px;
+  }
+
+  button {
+    font-size: 14px;  
+    padding: 10px 20px;
+    margin: 10px;
+  }
+}
