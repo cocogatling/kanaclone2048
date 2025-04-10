@@ -3,6 +3,7 @@ var score = 0;
 var rows = 4;
 var columns = 4;
 var moveCount = 0;
+var oldBoard = null;
 
 window.onload = function() {
     setGame();
@@ -160,7 +161,7 @@ function slide(row) {
 }
 
 function slideLeft() {
-    let oldBoard = JSON.stringify(board);
+    oldBoard = board.map(row => row.slice());
 
     for (let r = 0; r < rows; r++) {
         let row = board[r];
@@ -178,7 +179,7 @@ function slideLeft() {
 }
 
 function slideRight() {
-    let oldBoard = JSON.stringify(board);
+    oldBoard = board.map(row => row.slice());
 
     for (let r = 0; r < rows; r++) {
         let row = board[r];         //[0, 2, 2, 2]
@@ -197,7 +198,7 @@ function slideRight() {
 }
 
 function slideUp() {
-    let oldBoard = JSON.stringify(board);
+    oldBoard = board.map(row => row.slice());
 
     for (let c = 0; c < columns; c++) {
         let row = [board[0][c], board[1][c], board[2][c], board[3][c]];
@@ -219,7 +220,7 @@ function slideUp() {
 }
 
 function slideDown() {
-    let oldBoard = JSON.stringify(board);
+    oldBoard = board.map(row => row.slice());
 
     for (let c = 0; c < columns; c++) {
         let row = [board[0][c], board[1][c], board[2][c], board[3][c]];
@@ -271,6 +272,23 @@ function hasEmptyTile() {
         }
     }
     return false;
+}
+
+function undoMove() {
+    if (oldBoard) {
+        board = oldBoard.map(row => row.slice());
+        setBoard(); // re-render everything
+    }
+}
+
+function setBoard() {
+    for (let r = 0; r < rows; r++) {
+        for (let c = 0; c < columns; c++) {
+            let tile = document.getElementById(r.toString() + "-" + c.toString());
+            let num = board[r][c];
+            updateTile(tile, num);
+        }
+    }
 }
 
 function canMove() {

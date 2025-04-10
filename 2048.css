@@ -41,78 +41,123 @@ hr {
 /* colored tiles */
 
 .x2 {
-    background-color: #eee4da;
+    background-image: url('images/Kanade_1_thumbnail.png');
+    background-size: cover;
+    background-position: center;
     color: white;
+    color: rgba(255, 255, 255, 0);
 }
 
 .x4 {
-    background-color: #ece0ca;
+    background-image: url('images/Kanade_2_thumbnail.png');
+    background-size: cover;
+    background-position: center;
     color: white;
+    color: rgba(255, 255, 255, 0);
 }
 
 .x8 {
-    background-color: #f4b17a;
+    background-image: url('images/Kanade_3_thumbnail.png');
+    background-size: cover;
+    background-position: center;
     color: white;
+    color: rgba(255, 255, 255, 0);
 }
 
 .x16{
-    background-color: #f59575;
+    background-image: url('images/Kanade_3_trained_thumbnail.png');
+    background-size: cover;
+    background-position: center;
     color: white;
+    color: rgba(255, 255, 255, 0);
 }
 
 .x32{
-    background-color: #f57c5f;
+    background-image: url('images/Kanade_4_thumbnail.png');
+    background-size: cover;
+    background-position: center;
     color: white;
+    color: rgba(255, 255, 255, 0);
 }
 
 .x64{
-    background-color: #f65d3b;
+    background-image: url('images/Kanade_4_trained_thumbnail.png');
+    background-size: cover;
+    background-position: center;
     color: white;
+    color: rgba(255, 255, 255, 0);
 }
 
 .x128{
-    background-color: #edce71;
+    background-image: url('images/Kanade_5_thumbnail.png');
+    background-size: cover;
+    background-position: center;
     color: white;
+    color: rgba(255, 255, 255, 0);
 }
 
 .x256{
-    background-color: #edcc63;
+    background-image: url('images/Kanade_5_trained_thumbnail.png');
+    background-size: cover;
+    background-position: center;
     color: white;
+    color: rgba(255, 255, 255, 0);
 }
 
 .x512{
-    background-color: #edc651;
+    background-image: url('images/Kanade_6_thumbnail.png');
+    background-size: cover;
+    background-position: center;
     color: white;
+    color: rgba(255, 255, 255, 0);
 }
 
 .x1024{
-    background-color: #eec744;
+    background-image: url('images/Kanade_6_trained_thumbnail.png');
+    background-size: cover;
+    background-position: center;
     color: white;
+    color: rgba(255, 255, 255, 0);
 }
 
 .x2048{
-    background-color: #ecc230;
+    background-image: url('images/Kanade_9_thumbnail.png');
+    background-size: cover;
+    background-position: center;
     color: white;
+    color: rgba(255, 255, 255, 0);
 }
 
 .x4096 {
-    background-color: #fe3d3d;
+    background-image: url('images/Kanade_9_trained_thumbnail.png');
+    background-size: cover;
+    background-position: center;
     color: white;
+    color: rgba(255, 255, 255, 0);
 }
 
 .x8192 {
-    background-color: #ff2020;
+    background-image: url('images/Kanade_12_thumbnail.png');
+    background-size: cover;
+    background-position: center;
     color: white;
+    color: rgba(255, 255, 255, 0);
 }
 
 .x16384 {
-    background-color: #ff2020;
+    background-image: url('images/Kanade_12_trained_thumbnail.png');
+    background-size: cover;
+    background-position: center;
     color: white;
+    color: rgba(255, 255, 255, 0);
 }
 
 .x32768 {
-    background-color: #ff2020;
+    background-image: url('images/Kanade_14_trained_thumbnail.png');
+    background-size: cover;
+    background-position: center;
     color: white;
+    color: rgba(255, 255, 255, 0);
 }
 
 .game-over-section {
