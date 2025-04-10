@@ -106,23 +106,35 @@ function handleSwipeGesture() {
     const dx = touchEndX - touchStartX;
     const dy = touchEndY - touchStartY;
 
+    let moved = false;
+
     if (Math.abs(dx) > Math.abs(dy)) {
         // Horizontal swipe
         if (dx > 30) {
-            slideRight();
+            moved = slideRight();
+            checkGameOver();
         } else if (dx < -30) {
-            slideLeft();
+            moved = slideLeft();
+            checkGameOver();
         }
     } else {
         // Vertical swipe
         if (dy > 30) {
-            slideDown();
+            moved = slideDown();
+            checkGameOver();
         } else if (dy < -30) {
-            slideUp();
+            moved = slideUp();
+            checkGameOver();
         }
     }
-    setTwo();
-    document.getElementById("score").innerText = score;
+
+    if (moved) {
+        setTwo();
+        moveCount++;
+        document.getElementById("score").innerText = score;
+        document.getElementById("moves").innerText = moveCount;
+        checkGameOver(); 
+    }
 }
 
 function filterZero(row){
@@ -277,6 +289,7 @@ function canMove() {
 
 function checkGameOver() {
     if (!canMove()) {
+        console.log("Game over triggered.");
         showGameOver();
     }
 }

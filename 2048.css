@@ -14,8 +14,8 @@ hr {
 }
 
 #board {
-    width: 400px;
-    height: 400px;
+    width: 300px;
+    height: 300px;
 
     background-color: #cdc1b5;
     border: 6px solid #bbada0;
@@ -26,8 +26,8 @@ hr {
 }
 
 .tile {
-    width: 90px;
-    height: 90px;
+    width: 65px;
+    height: 65px;
     border: 5px solid #bbada0;
 
     font-size: 40px;
