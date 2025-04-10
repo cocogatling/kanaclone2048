@@ -289,7 +289,6 @@ function canMove() {
 
 function checkGameOver() {
     if (!canMove()) {
-        console.log("Game over triggered.");
         showGameOver();
     }
 }
