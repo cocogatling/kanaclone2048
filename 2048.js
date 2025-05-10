@@ -1,11 +1,15 @@
-var board;
-var score = 0;
-var rows = 4;
-var columns = 4;
-var moveCount = 0;
-var oldBoard = null;
+var gameData = {
+    board,
+    score: 0,
+    rows: 4,
+    columns: 4,
+    moveCount: 0,
+    oldBoard: null
+}
 
-window.onload = function() {
+
+window.onload = function() { 
+    loadGame();
     setGame();
 }
 
@@ -36,7 +40,6 @@ function setGame() {
     //create 2 to begin the game
     setTwo();
     setTwo();
-
 }
 
 function updateTile(tile, num) {
@@ -56,21 +59,25 @@ document.addEventListener('keyup', (e) => {
         moved = slideLeft();
         setTwo();
         checkGameOver();
+        saveGame();
     }
     else if (e.code == "ArrowRight" || e.code === "KeyD") {
         moved = slideRight();
         setTwo();
         checkGameOver();
+        saveGame();
     }
     else if (e.code == "ArrowUp" || e.code === "KeyW") {
         moved = slideUp();
         setTwo();
         checkGameOver();
+        saveGame();
     }
     else if (e.code == "ArrowDown" || e.code === "KeyS") {
         moved = slideDown();
         setTwo();
         checkGameOver();
+        saveGame();
     }
 
     if (moved) {
@@ -79,6 +86,7 @@ document.addEventListener('keyup', (e) => {
         document.getElementById("score").innerText = score;
         document.getElementById("moves").innerText = moveCount;
         checkGameOver();
+        saveGame();
     }
 });
 
@@ -114,18 +122,22 @@ function handleSwipeGesture() {
         if (dx > 30) {
             moved = slideRight();
             checkGameOver();
+            saveGame();
         } else if (dx < -30) {
             moved = slideLeft();
             checkGameOver();
+            saveGame();
         }
     } else {
         // Vertical swipe
         if (dy > 30) {
             moved = slideDown();
             checkGameOver();
+            saveGame();
         } else if (dy < -30) {
             moved = slideUp();
             checkGameOver();
+            saveGame();
         }
     }
 
@@ -135,6 +147,7 @@ function handleSwipeGesture() {
         document.getElementById("score").innerText = score;
         document.getElementById("moves").innerText = moveCount;
         checkGameOver(); 
+        saveGame();
     }
 }
 
