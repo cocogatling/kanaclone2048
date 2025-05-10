@@ -9,7 +9,6 @@ var gameData = {
 
 
 window.onload = function() { 
-    loadGame();
     setGame();
 }
 
@@ -21,18 +20,18 @@ function setGame() {
     //     [4, 4, 8, 8]
     // ];
 
-    board = [
+    gameData.board = [
         [0, 0, 0, 0],
         [0, 0, 0, 0],
         [0, 0, 0, 0],
         [0, 0, 0, 0]
     ]
 
-    for (let r = 0; r < rows; r++) {
-        for (let c = 0; c < columns; c++) {
+    for (let r = 0; r < gameData.rows; r++) {
+        for (let c = 0; c < gameData.columns; c++) {
             let tile = document.createElement("div");
             tile.id = r.toString() + "-" + c.toString();
-            let num = board[r][c];
+            let num = gameData.board[r][c];
             updateTile(tile, num);
             document.getElementById("board").append(tile);
         }
@@ -157,7 +156,7 @@ function filterZero(row){
 
 function slide(row) {
     //[0, 2, 2, 2] 
-    row = filterZero(row); //[2, 2, 2]
+    row = filterZero(gameData.rows); //[2, 2, 2]
     for (let i = 0; i < row.length-1; i++){
         if (row[i] == row[i+1]) {
             row[i] *= 2;
@@ -165,7 +164,7 @@ function slide(row) {
             score += row[i];
         }
     } //[4, 0, 2]
-    row = filterZero(row); //[4, 2]
+    row = filterZero(gameData.rows); //[4, 2]
     //add zeroes
     while (row.length < columns) {
         row.push(0);
@@ -174,15 +173,15 @@ function slide(row) {
 }
 
 function slideLeft() {
-    oldBoard = board.map(row => row.slice());
+    gameData.oldBoard = gameData.board.map(row => row.slice());
 
-    for (let r = 0; r < rows; r++) {
-        let row = board[r];
+    for (let r = 0; r < gameData.rows; r++) {
+        let row = gameData.board[r];
         row = slide(row);
-        board[r] = row;
-        for (let c = 0; c < columns; c++){
+        gameData.board[r] = row;
+        for (let c = 0; c < gameData.columns; c++){
             let tile = document.getElementById(r.toString() + "-" + c.toString());
-            let num = board[r][c];
+            let num = gameData.board[r][c];
             updateTile(tile, num);
         }
     }
@@ -263,10 +262,10 @@ function setTwo() {
     let found = false;
     while (!found) {
         //find random row and column to place a 2 in
-        let r = Math.floor(Math.random() * rows);
-        let c = Math.floor(Math.random() * columns);
-        if (board[r][c] == 0) {
-            board[r][c] = 2;
+        let r = Math.floor(Math.random() * gameData.rows);
+        let c = Math.floor(Math.random() * gameData.columns);
+        if (gameData.board[r][c] == 0) {
+            gameData.board[r][c] = 2;
             let tile = document.getElementById(r.toString() + "-" + c.toString());
             tile.innerText = "2";
             tile.classList.add("x2");
@@ -277,9 +276,9 @@ function setTwo() {
 
 function hasEmptyTile() {
     let count = 0;
-    for (let r = 0; r < rows; r++) {
-        for (let c = 0; c < columns; c++) {
-            if (board[r][c] == 0) { //at least one zero in the board
+    for (let r = 0; r < gameData.rows; r++) {
+        for (let c = 0; c < gameData.columns; c++) {
+            if (gameData.board[r][c] == 0) { //at least one zero in the board
                 return true;
             }
         }
