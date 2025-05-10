@@ -1,42 +1,55 @@
-var board;
-var score = 0;
-var rows = 4;
-var columns = 4;
-var moveCount = 0;
-var oldBoard = null;
+var gameData = {
+    board,
+    score: 0,
+    rows: 4,
+    columns: 4,
+    moveCount: 0,
+    oldBoard: null
+}
 
-window.onload = function() {
+function saveGame() {
+    gameData.board = board;
+    gameData.oldBoard = oldBoard;
+    gameData.score = score;
+    gameData.moveCount = moveCount;
+    localStorage.setItem("gameSave", JSON.stringify(gameData));
+}
+
+function loadGame() {
+    let savegame = JSON.parse(localStorage.getItem("gameSave"));
+    if (savegame !== null) {
+        gameData = savegame;
+        board = gameData.board;
+        oldBoard = gameData.oldBoard;
+        score = gameData.score;
+        moveCount = gameData.moveCount;
+    }
+}
+
+window.onload = function() { 
+    loadGame();
     setGame();
 }
 
 function setGame() {
-    // board = [
-    //     [2, 2, 2, 2],
-    //     [2, 2, 2, 2],
-    //     [4, 4, 8, 8],
-    //     [4, 4, 8, 8]
-    // ];
+    if (board.length === 0) {
+        board = Array.from({ length: gameData.rows }, () => Array(gameData.columns).fill(0));
+        setTwo();
+        setTwo();
+    }
 
-    board = [
-        [0, 0, 0, 0],
-        [0, 0, 0, 0],
-        [0, 0, 0, 0],
-        [0, 0, 0, 0]
-    ]
-
-    for (let r = 0; r < rows; r++) {
-        for (let c = 0; c < columns; c++) {
+    for (let r = 0; r < gameData.rows; r++) {
+        for (let c = 0; c < gameData.columns; c++) {
             let tile = document.createElement("div");
-            tile.id = r.toString() + "-" + c.toString();
+            tile.id = r + "-" + c;
             let num = board[r][c];
             updateTile(tile, num);
             document.getElementById("board").append(tile);
         }
     }
-    //create 2 to begin the game
-    setTwo();
-    setTwo();
 
+    document.getElementById("score").innerText = score;
+    document.getElementById("moves").innerText = moveCount;
 }
 
 function updateTile(tile, num) {
@@ -56,21 +69,25 @@ document.addEventListener('keyup', (e) => {
         moved = slideLeft();
         setTwo();
         checkGameOver();
+        saveGame();
     }
     else if (e.code == "ArrowRight" || e.code === "KeyD") {
         moved = slideRight();
         setTwo();
         checkGameOver();
+        saveGame();
     }
     else if (e.code == "ArrowUp" || e.code === "KeyW") {
         moved = slideUp();
         setTwo();
         checkGameOver();
+        saveGame();
     }
     else if (e.code == "ArrowDown" || e.code === "KeyS") {
         moved = slideDown();
         setTwo();
         checkGameOver();
+        saveGame();
     }
 
     if (moved) {
@@ -79,6 +96,7 @@ document.addEventListener('keyup', (e) => {
         document.getElementById("score").innerText = score;
         document.getElementById("moves").innerText = moveCount;
         checkGameOver();
+        saveGame();
     }
 });
 
@@ -114,18 +132,22 @@ function handleSwipeGesture() {
         if (dx > 30) {
             moved = slideRight();
             checkGameOver();
+            saveGame();
         } else if (dx < -30) {
             moved = slideLeft();
             checkGameOver();
+            saveGame();
         }
     } else {
         // Vertical swipe
         if (dy > 30) {
             moved = slideDown();
             checkGameOver();
+            saveGame();
         } else if (dy < -30) {
             moved = slideUp();
             checkGameOver();
+            saveGame();
         }
     }
 
@@ -135,6 +157,7 @@ function handleSwipeGesture() {
         document.getElementById("score").innerText = score;
         document.getElementById("moves").innerText = moveCount;
         checkGameOver(); 
+        saveGame();
     }
 }
 
