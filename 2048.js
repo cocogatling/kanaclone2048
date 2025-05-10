@@ -156,7 +156,7 @@ function filterZero(row){
 
 function slide(row) {
     //[0, 2, 2, 2] 
-    row = filterZero(gameData.rows); //[2, 2, 2]
+    row = filterZero(row); //[2, 2, 2]
     for (let i = 0; i < row.length-1; i++){
         if (row[i] == row[i+1]) {
             row[i] *= 2;
