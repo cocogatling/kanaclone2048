@@ -33,8 +33,30 @@ function loadGame() {
 }
 
 window.onload = function() {
-    setGame();
-    loadGame();
+    const saveData = JSON.parse(localStorage.getItem("2048Save"));
+    if (saveData) {
+        board = saveData.board;
+        score = saveData.score;
+        moveCount = saveData.moveCount;
+        initBoard();  // ← set up tiles from loaded board
+        document.getElementById("score").innerText = score;
+        document.getElementById("moves").innerText = moveCount;
+        console.log("Game loaded!");
+    } else {
+        setGame();  // ← only start fresh if no save found
+        console.log("No saved game found, starting new game.");
+    }
+}
+
+function initBoard() {
+    for (let r = 0; r < rows; r++) {
+        for (let c = 0; c < columns; c++) {
+            let tile = document.createElement("div");
+            tile.id = r.toString() + "-" + c.toString();
+            document.getElementById("board").append(tile);
+        }
+    }
+    setBoard();  // update visuals with loaded numbers
 }
 
 function setGame() {
