@@ -54,23 +54,15 @@ document.addEventListener('keyup', (e) => {
 
     if (e.code == "ArrowLeft" || e.code === "KeyA") {
         moved = slideLeft();
-        setTwo();
-        checkGameOver();
     }
     else if (e.code == "ArrowRight" || e.code === "KeyD") {
         moved = slideRight();
-        setTwo();
-        checkGameOver();
     }
     else if (e.code == "ArrowUp" || e.code === "KeyW") {
         moved = slideUp();
-        setTwo();
-        checkGameOver();
     }
     else if (e.code == "ArrowDown" || e.code === "KeyS") {
         moved = slideDown();
-        setTwo();
-        checkGameOver();
     }
 
     if (moved) {
@@ -113,19 +105,15 @@ function handleSwipeGesture() {
         // Horizontal swipe
         if (dx > 30) {
             moved = slideRight();
-            checkGameOver();
         } else if (dx < -30) {
             moved = slideLeft();
-            checkGameOver();
         }
     } else {
         // Vertical swipe
         if (dy > 30) {
             moved = slideDown();
-            checkGameOver();
         } else if (dy < -30) {
             moved = slideUp();
-            checkGameOver();
         }
     }
 
