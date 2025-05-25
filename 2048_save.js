@@ -8,12 +8,11 @@ var oldBoard = null;
 // Save the current game state
 function saveGame() {
     const saveData = {
-        board: board,
+        board: board.map(row => row.slice()),  // deep copy
         score: score,
         moveCount: moveCount
     };
     localStorage.setItem("2048Save", JSON.stringify(saveData));
-    console.log("Game saved!");
 }
 
 // Load saved game state
@@ -359,7 +358,29 @@ function showGameOver() {
 }
 
 function restartGame() {
-    location.reload(); // or call your own resetGame() function if you have one
+    
+    score = 0;
+    moveCount = 0;
+    board = [
+        [0, 0, 0, 0],
+        [0, 0, 0, 0],
+        [0, 0, 0, 0],
+        [0, 0, 0, 0]
+    ];
+    initBoard();
+    setBoard();
+    setTwo();
+    setTwo();w
+    document.getElementById("score").innerText = score;
+
+    if (document.getElementById("moves")) {
+        document.getElementById("moves").innerText = moveCount;
+    }
+
+    document.getElementById("title").innerText = "2048 Game";
+    document.getElementById("scoreText").innerText = "";
+    localStorage.removeItem("2048Save");
+    saveGame();
 }
 
 // Add an event listener for the reset button
